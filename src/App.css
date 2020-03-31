@@ -1,0 +1,22 @@
+.App {
+  text-align: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  min-height: 100%;
+}
+
+.content {
+  height: 100%;
+  flex-wrap: wrap;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.App-link {
+  color: #61dafb;
+}
+

@@ -1,0 +1,17 @@
+.Objective {
+    -webkit-box-shadow: 0px 2px 7px -3px #000000;
+    box-shadow: 0px 2px 7px -3px #000000;
+    background-color: #FFFFFF;
+    width: 500px;
+    min-height: 100px;
+    margin: 10px;
+}
+
+.Title {
+    -webkit-box-shadow: 0px 2px 7px -3px #000000;
+    box-shadow: 0px 2px 7px -3px #000000;
+    text-align: left;
+    padding: 5px;
+    color: dimgrey;
+    font-size: 1.5rem;
+}
