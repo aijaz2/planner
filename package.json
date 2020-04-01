@@ -10,7 +10,8 @@
     "couchbase": "^2.6.11",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "gh-pages": "^2.2.0"
   },
   "scripts": {
     "predeploy": "npm run build",
