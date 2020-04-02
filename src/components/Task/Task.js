@@ -54,7 +54,7 @@ function Task({task, removeTask, index}) {
             <div className="Specific">
                 Status: {task.status}
             </div>
-            <button className="ButtonRed" onClick={() => removeTask(index)}>&#x2717;</button>
+            <button className="ButtonRed" onClick={() => removeTask(index)}>Delete task</button>
         </div>
     );
 }

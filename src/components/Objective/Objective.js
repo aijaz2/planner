@@ -21,15 +21,18 @@ function Objective({objective, deleteObjective}) {
             "relevant": "asd",
             "status": "asd"
         }
-        const newTasks = [...tasks, { tempTask }];
+        let newTasks = [...tasks,  tempTask ];
+        console.log(tasks);
         setTasks(newTasks);
+        console.log(tasks);
     };
     return (
         <div className="Objective">
             <div className="Title">
                 {objective.title}
+                Total tasks: {tasks.length}
             </div>
-            {objective.task.map((task, index) =>
+            {tasks.map((task, index) =>
                 <Task removeTask={removeTask} index={index} key={index} task={task} />)}
             <button onClick={() =>addTask(objective.id)}>Add Task</button>
             <button onClick={() =>deleteObjective(objective.id)}>Delete objective</button>
