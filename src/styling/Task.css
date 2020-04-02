@@ -1,17 +1,19 @@
 .Task {
     -webkit-box-shadow: 0px 2px 7px -3px #000000;
-    box-shadow: 0px 2px 7px -3px #000000;
+    box-shadow: 0px 2px 5px -3px #000000;
     font-size: 1.2rem;
     color: dimgrey;
     text-align: left;
     padding: 5px;
     margin: 5px;
     background: #e8e8e8;
+    border: 1px solid grey;
+    border-radius: 5px;
 }
 
 .Task:hover {
     -webkit-box-shadow: 0px 2px 7px -3px #000000;
-    box-shadow: 0px 2px 10px -3px #000000;
+    box-shadow: 0px 2px 7px -3px #000000;
 }
 
 .TaskTitle {

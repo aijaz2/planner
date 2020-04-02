@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import '../../styling/Task.css';
 import Specific from "./Specific";
 
-function Task({task, removeTask, key}) {
+function Task({task, deleteTask}) {
 
     const [specifics, setSpecifics] = useState(task.specific);
     const [todo, setTodo] = useState("");
@@ -33,12 +33,13 @@ function Task({task, removeTask, key}) {
 
     return (
         <div className="Task">
+            <div><button onClick={() => deleteTask(task.id)}>Delete task</button></div>
             <div className="TaskTitle">
                 {task.title} <br/>
                 id: {task.id}
             </div>
             <div className="Specific">
-                Specific:
+                Todo:
                 <div className="todo-list">
                     {specifics.map((specific, index) => (
                         <Specific
@@ -51,6 +52,7 @@ function Task({task, removeTask, key}) {
                     ))}
                     <form onSubmit={handleSubmit}>
                         <input
+                            placeholder="Input text and press enter…"
                             type="text"
                             className="input"
                             value={todo}
@@ -71,7 +73,6 @@ function Task({task, removeTask, key}) {
             <div className="Specific">
                 Status: {task.status}
             </div>
-            <button className="ButtonRed" onClick={() => removeTask(key)}>Delete task</button>
         </div>
     );
 }

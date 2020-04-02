@@ -6,53 +6,34 @@ import data from "./data";
 function App() {
     const uuidv4 = require("uuid/v4")
 
-    const [objectives, setObjectives] = useState(data);
+    const [objectives, setObjectives] = useState([]);
 
     const addObjective = () => {
         const newObjective = {
             "title": "Objective ",
             "id": uuidv4(),
-            "task": [{
-                "id": uuidv4(),
-                "title": "task1",
-                "specific": [],
-                "measurable": "",
-                "achievable": "",
-                "relevant": "",
-                "status": ""
-            }, {
-                "id": uuidv4(),
-                "title": "task2",
-                "specific": [],
-                "measurable": "",
-                "achievable": "",
-                "relevant": "",
-                "status": ""
-            }]
+            "task": []
         }
         let old = [...objectives, newObjective];
         setObjectives(old);
     };
 
-    const deleteObjective = index => {
-        const newObjectives = [...objectives];
-        newObjectives.splice(index, 1);
+    const deleteObjective = id => {
+        let newObjectives= [...objectives];
+        newObjectives=newObjectives.filter(objective => objective.id !== id);
         setObjectives(newObjectives);
     };
-
     return (
         <div>
+            <button onClick={addObjective}>Add objective!</button>
             <div className="content">
                 {objectives.map((objective, index) => {
                     return (
                         <div>
-                            <Objective deleteObjective={deleteObjective} index={index} key={objective.id} objective={objective}/>
+                            <Objective deleteObjective={deleteObjective} index={index} key={objective.id} objective={objective} task={objective.task}/>
                         </div>
                     )
                 })}
-            </div>
-            <div>
-                <button onClick={addObjective}>Add objective!</button>
             </div>
         </div>
     )
