@@ -1,81 +1,33 @@
 import React, {useState} from 'react';
 import './App.css';
-import Objective from "./components/Card/Objective.js";
-
+import Objective from "./components/Objective/Objective.js";
+import data from "./data";
 
 function App() {
-    const [objectives, setObjectives] = useState([
-            {
-                "title": "Objective 0",
-                "id": 0,
-                "task": [
-                    {
-                        "id": 3,
-                        "title": "task1",
-                        "specific": "sasdad",
-                        "measurable": "ad",
-                        "achievable": "ads",
-                        "relevant": "asd",
-                        "status": "asd"
-                    },
-                    {
-                        "id": 4,
-                        "title": "task2",
-                        "specific": "sasdad",
-                        "measurable": "ad",
-                        "achievable": "ads",
-                        "relevant": "asd",
-                        "status": "asd"
-                    }
-                ]
-            },
-            {
-                "title": "Objective 1",
-                "id": 1,
-                "task": [
-                    {
-                        "id": 5,
-                        "title": "task12",
-                        "specific": "sasdad",
-                        "measurable": "ad",
-                        "achievable": "ads",
-                        "relevant": "asd",
-                        "status": "asd"
-                    },
-                    {
-                        "id": 6,
-                        "title": "task22",
-                        "specific": "sasdad",
-                        "measurable": "ad",
-                        "achievable": "ads",
-                        "relevant": "asd",
-                        "status": "asd"
-                    }
-                ]
-            }]
+    const uuidv4 = require("uuid/v4")
 
-    )
+    const [objectives, setObjectives] = useState(data);
 
     const addObjective = () => {
         const newObjective = {
-            "title": "Objective "+Object.keys(objectives).length,
-            "id": Object.keys(objectives).length+1,
+            "title": "Objective " + Object.keys(objectives).length,
+            "id": uuidv4(),
             "task": [{
-                "id": 5,
+                "id": uuidv4(),
                 "title": "task1",
-                "specific": "sasdad",
-                "measurable": "ad",
-                "achievable": "ads",
-                "relevant": "asd",
-                "status": "asd"
+                "specific": [],
+                "measurable": "",
+                "achievable": "",
+                "relevant": "",
+                "status": ""
             }, {
-                "id": 4,
+                "id": uuidv4(),
                 "title": "task2",
-                "specific": "sasdad",
-                "measurable": "ad",
-                "achievable": "ads",
-                "relevant": "asd",
-                "status": "asd"
+                "specific": [],
+                "measurable": "",
+                "achievable": "",
+                "relevant": "",
+                "status": ""
             }]
         }
         let old = [...objectives, newObjective];
@@ -83,7 +35,7 @@ function App() {
     };
 
     const deleteObjective = (id) => {
-        let old  = objectives.filter(objective => objective.id !== id);
+        let old = objectives.filter(objective => objective.id !== id);
         setObjectives(old);
     };
 
@@ -93,9 +45,9 @@ function App() {
                 {objectives.map((objective, index) => {
                     return (
                         <div>
-                            <Objective delete={deleteObjective} key={index} objective={objective}/>
+                            <Objective deleteObjective={deleteObjective} key={index} objective={objective}/>
                         </div>
-                )
+                    )
                 })}
             </div>
             <div>

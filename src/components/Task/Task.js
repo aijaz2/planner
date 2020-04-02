@@ -1,27 +1,60 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../../styling/Task.css';
+import Specific from "./Specific";
+import SpecificForm from "./SpecificForm";
+function Task({task, removeTask, index}) {
 
-function Task(props) {
+    const [specifics, setSpecifics] = useState(task.specific);
+    const addTodo = text => {
+        const newSpecifics = [...specifics, { text }];
+        setSpecifics(newSpecifics);
+    };
+
+    const completeTodo = index => {
+        const newSpecifics = [...specifics];
+        newSpecifics[index].isCompleted = !newSpecifics[index].isCompleted;
+        setSpecifics(newSpecifics);
+    };
+
+    const removeTodo = index => {
+        const newSpecifics = [...specifics];
+        newSpecifics.splice(index, 1);
+        setSpecifics(newSpecifics);
+    };
+
     return (
         <div className="Task">
             <div className="TaskTitle">
-                {props.task.title}
+                {task.title}
             </div>
             <div className="Specific">
-                Specific: {props.task.specific}
+                Specific:
+                <div className="todo-list">
+                    {specifics.map((specific, index) => (
+                        <Specific
+                            key={index}
+                            index={index}
+                            todo={specific}
+                            completeTodo={completeTodo}
+                            removeTodo={removeTodo}
+                        />
+                    ))}
+                    <SpecificForm addTodo={addTodo} />
+                </div>
             </div>
-            <div className="Measurable">
-                Measurable: {props.task.measurable}
+            <div className="Specific">
+                Measurable: {task.measurable}
             </div>
-            <div className="Achievable">
-                Achievable: {props.task.achievable}
+            <div className="Specific">
+                Achievable: {task.achievable}
             </div>
-            <div className="Relevant">
-                Relevant: {props.task.relevant}
+            <div className="Specific">
+                Relevant: {task.relevant}
             </div>
-            <div className="Status">
-                Status: {props.task.status}
+            <div className="Specific">
+                Status: {task.status}
             </div>
+            <button className="ButtonRed" onClick={() => removeTask(index)}>&#x2717;</button>
         </div>
     );
 }

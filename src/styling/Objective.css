@@ -5,8 +5,12 @@
     width: 500px;
     min-height: 100px;
     margin: 10px;
+    border-radius: 4px;
 }
-
+.Objective:hover {
+    -webkit-box-shadow: 0px 2px 7px -3px #000000;
+    box-shadow: 0px 2px 10px -3px #000000;
+}
 .Title {
     -webkit-box-shadow: 0px 2px 7px -3px #000000;
     box-shadow: 0px 2px 7px -3px #000000;
