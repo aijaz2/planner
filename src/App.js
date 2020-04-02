@@ -10,7 +10,7 @@ function App() {
 
     const addObjective = () => {
         const newObjective = {
-            "title": "Objective " + Object.keys(objectives).length,
+            "title": "Objective ",
             "id": uuidv4(),
             "task": [{
                 "id": uuidv4(),
@@ -34,9 +34,10 @@ function App() {
         setObjectives(old);
     };
 
-    const deleteObjective = (id) => {
-        let old = objectives.filter(objective => objective.id !== id);
-        setObjectives(old);
+    const deleteObjective = index => {
+        const newObjectives = [...objectives];
+        newObjectives.splice(index, 1);
+        setObjectives(newObjectives);
     };
 
     return (
@@ -45,7 +46,7 @@ function App() {
                 {objectives.map((objective, index) => {
                     return (
                         <div>
-                            <Objective deleteObjective={deleteObjective} key={index} objective={objective}/>
+                            <Objective deleteObjective={deleteObjective} index={index} key={objective.id} objective={objective}/>
                         </div>
                     )
                 })}

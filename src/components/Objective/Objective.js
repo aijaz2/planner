@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import '../../styling/Objective.css';
 import Task from "../../components/Task/Task.js"
 
-function Objective({objective, deleteObjective}) {
+function Objective({objective, deleteObjective, index, key}) {
+    const uuidv4 = require("uuid/v4");
     const [tasks, setTasks] = useState(objective.task);
 
     const removeTask = index => {
@@ -13,7 +14,7 @@ function Objective({objective, deleteObjective}) {
 
     const addTask = () => {
         const tempTask={
-            "id": 5,
+            "id": uuidv4(),
             "title": "task12",
             "specific": [{"id":32, "text":"todo 1"},{"id":22, "text":"todo 2"}],
             "measurable": "ad",
@@ -22,20 +23,19 @@ function Objective({objective, deleteObjective}) {
             "status": "asd"
         }
         let newTasks = [...tasks,  tempTask ];
-        console.log(tasks);
         setTasks(newTasks);
-        console.log(tasks);
     };
+
     return (
         <div className="Objective">
             <div className="Title">
-                {objective.title}
-                Total tasks: {tasks.length}
+                {objective.title}<br/>
+                id: {objective.id}
             </div>
             {tasks.map((task, index) =>
-                <Task removeTask={removeTask} index={index} key={index} task={task} />)}
-            <button onClick={() =>addTask(objective.id)}>Add Task</button>
-            <button onClick={() =>deleteObjective(objective.id)}>Delete objective</button>
+                <Task removeTask={removeTask} index={index} key={task.id} task={task} />)}
+            <button onClick={() =>addTask(index)}>Add Task</button>
+            <button onClick={() =>deleteObjective(key)}>Delete objective</button>
         </div>
     );
 }
